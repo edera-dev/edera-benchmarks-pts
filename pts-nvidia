@@ -1,0 +1,2 @@
+#!/bin/sh
+exec docker run --runtime nvidia --gpus all --rm -v /etc/OpenCL/vendors/nvidia.icd:/etc/OpenCL/vendors/nvidia.icd -v ${PWD}/results:/opt/pts-results -it steven-cr.axolotl-tone.ts.net/edera/edera-benchmarks:latest "$@"

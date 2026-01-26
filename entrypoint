@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /usr/bin/tini -- /usr/bin/xvfb-run -a /usr/bin/phoronix-test-suite "$@"

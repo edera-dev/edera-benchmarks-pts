@@ -6,6 +6,9 @@ RUN mkdir -p ${HOME} /opt/pts-results
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+COPY apt/apt.llvm.org.asc /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+COPY apt/apt.llvm.org-22.sources /etc/apt/sources.list.d/apt.llvm.org-22.sources
+
 RUN apt-get update && \
     apt-get dist-upgrade -y && \
     apt-get install -y \
@@ -16,12 +19,14 @@ RUN apt-get update && \
         bison \
         build-essential \
         ca-certificates \
+        clang-22 \
         clinfo \
         cmake \
         fftw-dev \
         flex \
         gfortran \
         git \
+        hwloc-nox \
         libaio-dev \
         libapparmor-dev \
         libatlas-base-dev \
@@ -31,11 +36,13 @@ RUN apt-get update && \
         libfftw3-dev \
         libglew-dev \
         libglut-dev \
+        libhwloc-dev \
         libjpeg8-dev \
         libjpeg-turbo8-dev \
         liblapack-dev \
         libmpich-dev \
         libnuma-dev \
+        libomp-22-dev \
         libopenblas-dev \
         libopenmpi-dev \
         libperl-dev \
@@ -164,6 +171,9 @@ RUN mkdir -p ${HOME} /opt/pts-results
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+COPY apt/apt.llvm.org.asc /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+COPY apt/apt.llvm.org-22.sources /etc/apt/sources.list.d/apt.llvm.org-22.sources
+
 # Minimal runtime deps:
 # - PTS is PHP
 # - many tests need OpenCL loader, Vulkan loader/tools, MPI runtime, etc.
@@ -174,6 +184,7 @@ RUN apt-get update && \
         bc \
         ca-certificates \
         clinfo \
+        hwloc-nox \
         libaio1t64 \
         libapparmor1 \
         libatlas3-base \
@@ -183,11 +194,13 @@ RUN apt-get update && \
         libfftw3-bin \
         libglew2.2 \
         libglut3.12 \
+        libhwloc15 \
         libjpeg8 \
         libjpeg-turbo8 \
         liblapack3 \
         libmpich12 \
         libnuma1 \
+        libomp5 \
         libopenblas0 \
         libopenmpi3t64 \
         libslang2 \

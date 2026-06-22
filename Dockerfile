@@ -87,8 +87,8 @@ RUN dpkg-divert \
 
 # Pin to a tag or commit for reproducibility
 # TODO: Add a tag (e.g. 'v10.8.6-edera') once we have our test definitions sorted out.
-ARG PTS_REF=v10.8.4-edera
-RUN git clone --depth 1 --branch ${PTS_REF} https://github.com/tycho/phoronix-test-suite.git /opt/pts && \
+ARG PTS_REF=v10.8.4-edera1
+RUN git clone --depth 1 --branch ${PTS_REF} https://github.com/edera-dev/phoronix-test-suite.git /opt/pts && \
     cd /opt/pts && \
     ./install-sh && \
     command -v phoronix-test-suite

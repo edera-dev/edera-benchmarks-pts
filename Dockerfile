@@ -1,5 +1,5 @@
 # ---- builder: compile everything here ----
-FROM nvcr.io/nvidia/cuda:13.1.1-devel-ubuntu24.04 AS edera-benchmarks-dev
+FROM nvcr.io/nvidia/cuda:13.3.0-devel-ubuntu24.04 AS edera-benchmarks-dev
 
 ENV HOME=/opt/pts-home
 RUN mkdir -p ${HOME} /opt/pts-results
@@ -162,9 +162,8 @@ RUN phoronix-test-suite make-download-cache \
     local/vkpeak-1.3.0 \
     pts/xsbench-cl
 
-
 # ---- runtime: small image; just run the already-built tests ----
-FROM nvcr.io/nvidia/cuda:13.1.1-runtime-ubuntu24.04 AS edera-benchmarks
+FROM nvcr.io/nvidia/cuda:13.3.0-runtime-ubuntu24.04 AS edera-benchmarks
 
 ENV HOME=/opt/pts-home
 RUN mkdir -p ${HOME} /opt/pts-results
